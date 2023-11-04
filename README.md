@@ -16,17 +16,24 @@
 1. 使用vscode远程连接到服务器上需要在服务器上下载vscode-server；
 2. .vscode-server的内部目录结构如下：
   |-.vscode-server
+
     |-bin
+   
       |-${commit id1}
+   
       |-${commit id2}
+   
     |-...
+   
     |-data（不一定有）
+   
     |-extensions（不一定有）
+   
     |-...
-3. 每个版本的vscode都对应一个commit id，当远程连接到服务器时，本地设备上vscode的commit id会被传上去；
-4. 如果在.vscode-server/bin/目录下有与传上去的commit id同名的文件夹，服务器会直接完成远程链接的相关工作；
-5. 如果不符合第4步中提到的情况，在完成远程连接的相关工作前，服务器就会试图从vscode官方提供的网站下载对应的文件并把它们放到相应的目录下；
-6. vscode每次更新版本时就会换commit id，所以每次更新后服务器都会执行第5步中提到的操作；
+4. 每个版本的vscode都对应一个commit id，当远程连接到服务器时，本地设备上vscode的commit id会被传上去；
+5. 如果在.vscode-server/bin/目录下有与传上去的commit id同名的文件夹，服务器会直接完成远程链接的相关工作；
+6. 如果不符合第4步中提到的情况，在完成远程连接的相关工作前，服务器就会试图从vscode官方提供的网站下载对应的文件并把它们放到相应的目录下；
+7. vscode每次更新版本时就会换commit id，所以每次更新后服务器都会执行第5步中提到的操作；
 
 
 # 二、为什么vscode有时不能完成上述工作以至于需要我们自行完成相关操作
