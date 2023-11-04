@@ -32,7 +32,7 @@
 # 二、为什么vscode有时不能完成上述工作以至于需要我们自行完成相关操作
 
 
-  自2023年的某月始，出于某些未知原因，vscode官方提供的网站https://update.code.visualstudio.com无法稳定访问。因此，我们需要把该网址换成国内的cdn https://vscode.cdn.azure.cn
+  自2023年的某月始，出于某些未知原因，vscode官方提供的网站 https://update.code.visualstudio.com 无法稳定访问。因此，我们需要把该网址换成国内的cdn https://vscode.cdn.azure.cn
 
 
 # 三、常见问题
