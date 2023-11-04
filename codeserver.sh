@@ -67,7 +67,10 @@ for i in $selected_hosts; do
 		read -p "请输入新服务器的Host名称: " host
 		read -p "请输入新服务器的IP地址: " ip
 		read -p "请输入新服务器的用户名: " user
-		echo "\nHost $host\n  HostName $ip\n  User $user" >> ~/.ssh/config
+		echo "Host $host" >> ~/.ssh/config
+		echo "  HostName $ip" >> ~/.ssh/config
+		echo "  User $user" >> ~/.ssh/config
+		echo "" >> ~/.ssh/config
 	else
 	    	set -- $hosts
 	    	host=$(eval echo \$$i)
