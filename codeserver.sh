@@ -12,7 +12,7 @@ ipaddresses=""
 cmt=$(code --version | awk 'NR==2 {print $0}')
 plat=$(code --version | awk 'NR==3 {print $0}')
 if [ $lk -eq 0 ];then
-	wget https://vscode.cdn.azure.cn/stable/$cmt/vscode-server-linux-$plat.tar.gz
+	wget -P $HOME https://vscode.cdn.azure.cn/stable/$cmt/vscode-server-linux-$plat.tar.gz
 fi
 
 # 读取`~/.ssh/config`文件中的内容
@@ -37,7 +37,7 @@ while IFS= read -r line; do
             		index=$((index+1))
             		;;
     	esac
-done < ~/.ssh/config
+done < $HOME/.ssh/config
 
 # 让用户选择要在哪些服务器上执行操作
 
@@ -67,10 +67,10 @@ for i in $selected_hosts; do
 		read -p "请输入新服务器的Host名称: " host
 		read -p "请输入新服务器的IP地址: " ip
 		read -p "请输入新服务器的用户名: " user
-		echo "Host $host" >> ~/.ssh/config
-		echo "  HostName $ip" >> ~/.ssh/config
-		echo "  User $user" >> ~/.ssh/config
-		echo "" >> ~/.ssh/config
+		echo "Host $host" >> $HOME/.ssh/config
+		echo "  HostName $ip" >> $HOME/.ssh/config
+		echo "  User $user" >> $HOME/.ssh/config
+		echo "" >> $HOME/.ssh/config
 	else
 	    	set -- $hosts
 	    	host=$(eval echo \$$i)
@@ -81,7 +81,7 @@ for i in $selected_hosts; do
 	    	# echo "$host - $user@$ip"
     	fi
     	if [ $lk -eq 0 ]; then
-    		scp "vscode-server-linux-$plat.tar.gz" "$user@$ip:~/.vscode-server/bin"
+    		scp "$HOME/vscode-server-linux-$plat.tar.gz" "$user@$ip:~/.vscode-server/bin"
     	fi
     	ssh -T "$user@$ip" <<EOF
 	remote_download()
@@ -89,8 +89,8 @@ for i in $selected_hosts; do
 		commit="\$1"
 		platform="\$2"
 		linkedtoweb="\$3"
-		test -d ~/.vscode-server/bin || mkdir -p ~/.vscode-server/bin
-		cd ~/.vscode-server/bin
+		test -d \$HOME/.vscode-server/bin || mkdir -p \$HOME/.vscode-server/bin
+		cd \$HOME/.vscode-server/bin
 		if [ "\$linkedtoweb" = "1" ]; then
 			wget https://vscode.cdn.azure.cn/stable/\$commit/vscode-server-linux-\$platform.tar.gz
 		fi
@@ -105,8 +105,7 @@ EOF
 done
 
 if [ $lk -eq 0 ];then
-	rm -rf vscode-server-linux-$plat.tar.gz
+	rm -rf $HOME/vscode-server-linux-$plat.tar.gz
 fi
 
 echo "vscode-server已配置完毕。"
-cd ~
