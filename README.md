@@ -8,6 +8,7 @@
 2. 本脚本假设本地设备是能联网的，而服务器则不一定可以；
 3. 如果本地设备的操作系统是某个Linux发行版(或者其他能直接运行shell脚本的系统)，那本脚本是可以直接运行的；如果是windows系统（或者其他不能直接运行shell脚本的系统），那你需要下载git和wget，在git提供的终端里面运行本脚本，亲测有效；
 4. 给这个脚本赋予执行权限并执行它：chmod +x codeserver.sh && ./codeserver.sh,接下来根据提示操作即可；
+5. 使用前一定要把远程服务器上.vscode-server/bin目录下的${commit id}文件夹删除掉，也就是说每次更新完vscode后，先不要打开vscode（不然的话vscode会自动在远程服务器上.vscode-server/bin目录下创建${commit id}文件夹），先运行完这个脚本再打开vscode。
 
 
 # 一、vscode-server是如何工作的
