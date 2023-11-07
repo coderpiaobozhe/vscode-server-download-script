@@ -12,6 +12,9 @@ ipaddresses=""
 cmt=$(code --version | awk 'NR==2 {print $0}')
 plat=$(code --version | awk 'NR==3 {print $0}')
 if [ $lk -eq 0 ];then
+	if ls $HOME/vscode-server-linux-$plat.tar.gz* 1> /dev/null 2>&1;then
+		rm -rf $HOME/vscode-server-linux-$plat.tar.gz*
+	fi
 	wget -P $HOME https://vscode.cdn.azure.cn/stable/$cmt/vscode-server-linux-$plat.tar.gz
 fi
 
