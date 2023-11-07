@@ -24,8 +24,12 @@ while IFS= read -r line; do
 	case "$line" in
 		Host[\ \t]*[0-9a-zA-Z_\-\.]*)
 			# echo "Host->$line"
+			if [ $index -gt 0 ];then
+				echo "$index: $current_host - $current_user@$current_ip"
+			fi
 			current_host=$(echo "$line" | awk '{print $2}')
             		hosts="$hosts $current_host"
+            		index=$((index+1))
             		;;
         	[\ \t]*HostName[\ \t]*[0-9a-zA-Z_\-\.]*)
             		# echo "HostName->$line"
@@ -36,11 +40,10 @@ while IFS= read -r line; do
             		# echo "User->$line"
             		current_user=$(echo "$line" | awk '{print $2}')
             		usernames="$usernames $current_user"
-            		echo "$index: $current_host - $current_user@$current_ip"
-            		index=$((index+1))
             		;;
     	esac
 done < $HOME/.ssh/config
+echo "$index: $current_host - $current_user@$current_ip"
 
 # 让用户选择要在哪些服务器上执行操作
 
