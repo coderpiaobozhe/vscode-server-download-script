@@ -87,7 +87,7 @@ for i in $selected_hosts; do
 	    	# echo "$host - $user@$ip"
     	fi
     	if [ $lk -eq 0 ]; then
-    		scp "$HOME/vscode-server-linux-$plat.tar.gz" "$user@$ip:~/.vscode-server/bin"
+    		scp "$HOME/vscode-server-linux-$plat.tar.gz" "$user@$ip:~"
     	fi
     	ssh -T "$user@$ip" <<EOF
 	remote_download()
@@ -99,6 +99,8 @@ for i in $selected_hosts; do
 		cd \$HOME/.vscode-server/bin
 		if [ "\$linkedtoweb" = "1" ]; then
 			wget https://vscode.cdn.azure.cn/stable/\$commit/vscode-server-linux-\$platform.tar.gz
+   		else
+     			mv \$HOME/vscode-server-linux-\$platform.tar.gz ./
 		fi
 		if [ ! -d "\$commit" ]; then
 			tar -zxf vscode-server-linux-\$platform.tar.gz
