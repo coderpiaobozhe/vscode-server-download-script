@@ -15,7 +15,7 @@ if [ $lk -eq 0 ];then
 	if ls $HOME/vscode-server-linux-$plat.tar.gz* 1> /dev/null 2>&1;then
 		rm -rf $HOME/vscode-server-linux-$plat.tar.gz*
 	fi
-	wget -P $HOME https://vscode.cdn.azure.cn/stable/$cmt/vscode-server-linux-$plat.tar.gz
+	wget -P $HOME https://vscode.download.prss.microsoft.com/dbazure/download/stable/$cmt/vscode-server-linux-$plat.tar.gz
 fi
 
 # 读取`~/.ssh/config`文件中的内容
@@ -98,7 +98,7 @@ for i in $selected_hosts; do
 		test -d \$HOME/.vscode-server/bin || mkdir -p \$HOME/.vscode-server/bin
 		cd \$HOME/.vscode-server/bin
 		if [ "\$linkedtoweb" = "1" ]; then
-			wget https://vscode.cdn.azure.cn/stable/\$commit/vscode-server-linux-\$platform.tar.gz
+			wget https://vscode.download.prss.microsoft.com/dbazure/download/stable/\$commit/vscode-server-linux-\$platform.tar.gz
    		else
      			mv \$HOME/vscode-server-linux-\$platform.tar.gz ./
 		fi
