@@ -36,9 +36,9 @@
 # 二、为什么vscode有时不能完成上述工作以至于需要我们自行完成相关操作
 
 
-  自2023年的某月始，出于某些未知原因，vscode官方提供的网站 https://update.code.visualstudio.com 无法稳定访问。因此，我们需要把该网址换成国内的cdn https://vscode.cdn.azure.cn[该问题已解决]
+  自2023年的某月始，出于某些未知原因，vscode官方提供的网站 https://update.code.visualstudio.com 无法稳定访问。因此，我们需要把该网址换成国内的cdn https://vscode.cdn.azure.cn [该问题已解决]
 
-  2023年11月开始，由于vscode官方换了新的更新网站，https://vscode.cdn.azure.cn 已经被弃用了，新的网址是 https://vscode.download.prss.microsoft.com。该网站是中国内外统一使用的，Visaul Studio Code官方特地在中国部署了几个服务器节点。所以如果你的服务器能联网，那么现在你就不需要本脚本的帮助了。
+  2023年11月开始，由于vscode官方换了新的更新网站，https://vscode.cdn.azure.cn 已经被弃用了，新的网址是 https://vscode.download.prss.microsoft.com 。该网站是中国内外统一使用的，Visaul Studio Code官方特地在中国部署了几个服务器节点。所以如果你的服务器能联网，那么现在你就不需要本脚本的帮助了。
 
 # 三、常见问题
 
