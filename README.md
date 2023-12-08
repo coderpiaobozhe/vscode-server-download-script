@@ -38,7 +38,7 @@
 
   自2023年的某月始，出于某些未知原因，vscode官方提供的网站 https://update.code.visualstudio.com 无法稳定访问。因此，我们需要把该网址换成国内的cdn https://vscode.cdn.azure.cn
 
-  2023年11月开始，由于vscode官网换了新的更新网站，https://vscode.cdn.azure.cn 已经被弃用了，新的网址是 vscode.download.prss.microsoft.com
+  2023年11月开始，由于vscode官网换了新的更新网站，https://vscode.cdn.azure.cn 已经被弃用了，新的网址是 https://vscode.download.prss.microsoft.com
 
 # 三、常见问题
 
