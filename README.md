@@ -5,7 +5,7 @@
 
 
 1. 本脚本是在本地设备上执行的。使用本脚本前建议先把本地设备上的ssh公钥上传到服务器上，让本地设备能免密登录服务器(不传也可以，就是麻烦)；
-2. 本脚本假设本地设备是能联网的，而服务器则不一定可以。如果你的服务器能联网，你什么都不要改；如果你的服务器不能联网，你需要把脚本最开始的lk的值改成0；
+2. 本脚本假设本地设备是能联网的，而服务器则不可以。**如果你的服务器能联网，那你根本不需要本脚本**；如果你的服务器不能联网，你什么都不需要做；
 3. 如果本地设备的操作系统是某个Linux发行版(或者其他能直接运行shell脚本的系统)，那本脚本是可以直接运行的；如果是windows系统（或者其他不能直接运行shell脚本的系统），那你需要下载git和wget，在git提供的终端里面运行本脚本，亲测有效；
 4. 给这个脚本赋予执行权限并执行它：chmod +x codeserver.sh && ./codeserver.sh,接下来根据提示操作即可；
 5. 使用前一定要把远程服务器上.vscode-server/bin目录下的${commit id}文件夹删除掉，也就是说每次更新完vscode后，先不要打开vscode（不然的话vscode会自动在远程服务器上.vscode-server/bin目录下创建${commit id}文件夹，而且会给该文件夹上锁，那样会导致更新失败），先运行完这个脚本再打开vscode；
@@ -36,9 +36,9 @@
 # 二、为什么vscode有时不能完成上述工作以至于需要我们自行完成相关操作
 
 
-  自2023年的某月始，出于某些未知原因，vscode官方提供的网站 https://update.code.visualstudio.com 无法稳定访问。因此，我们需要把该网址换成国内的cdn https://vscode.cdn.azure.cn
+  自2023年的某月始，出于某些未知原因，vscode官方提供的网站 https://update.code.visualstudio.com 无法稳定访问。因此，我们需要把该网址换成国内的cdn https://vscode.cdn.azure.cn[该问题已解决]
 
-  2023年11月开始，由于vscode官网换了新的更新网站，https://vscode.cdn.azure.cn 已经被弃用了，新的网址是 https://vscode.download.prss.microsoft.com
+  2023年11月开始，由于vscode官方换了新的更新网站，https://vscode.cdn.azure.cn 已经被弃用了，新的网址是 https://vscode.download.prss.microsoft.com。该网站是中国内外统一使用的，Visaul Studio Code官方特地在中国部署了几个服务器节点。所以如果你的服务器能联网，那么现在你就不需要本脚本的帮助了。
 
 # 三、常见问题
 
