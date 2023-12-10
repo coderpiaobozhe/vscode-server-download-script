@@ -10,12 +10,11 @@ ipaddresses=""
 # 获取本地vscode信息
 
 cmt=$(code --version | awk 'NR==2 {print $0}')
-plat=$(code --version | awk 'NR==3 {print $0}')
 if [ $lk -eq 0 ];then
 	if ls $HOME/vscode-server-linux-$plat.tar.gz* 1> /dev/null 2>&1;then
-		rm -rf $HOME/vscode-server-linux-$plat.tar.gz*
+		rm -rf $HOME/vscode-server-linux-x64.tar.gz*
 	fi
-	wget -P $HOME https://vscode.download.prss.microsoft.com/dbazure/download/stable/$cmt/vscode-server-linux-$plat.tar.gz
+	wget -P $HOME https://vscode.download.prss.microsoft.com/dbazure/download/stable/$cmt/vscode-server-linux-x64.tar.gz
 fi
 
 # 读取`~/.ssh/config`文件中的内容
@@ -87,33 +86,32 @@ for i in $selected_hosts; do
 	    	# echo "$host - $user@$ip"
     	fi
     	if [ $lk -eq 0 ]; then
-    		scp "$HOME/vscode-server-linux-$plat.tar.gz" "$user@$ip:~"
+    		scp "$HOME/vscode-server-linux-x64.tar.gz" "$user@$ip:~"
     	fi
     	ssh -T "$user@$ip" <<EOF
 	remote_download()
 	{
 		commit="\$1"
-		platform="\$2"
-		linkedtoweb="\$3"
+		linkedtoweb="\$2"
 		test -d \$HOME/.vscode-server/bin || mkdir -p \$HOME/.vscode-server/bin
 		cd \$HOME/.vscode-server/bin
 		if [ "\$linkedtoweb" = "1" ]; then
-			wget https://vscode.download.prss.microsoft.com/dbazure/download/stable/\$commit/vscode-server-linux-\$platform.tar.gz
+			wget https://vscode.download.prss.microsoft.com/dbazure/download/stable/\$commit/vscode-server-linux-x64.tar.gz
    		else
-     			mv \$HOME/vscode-server-linux-\$platform.tar.gz ./
+     			mv \$HOME/vscode-server-linux-x64.tar.gz ./
 		fi
 		if [ ! -d "\$commit" ]; then
-			tar -zxf vscode-server-linux-\$platform.tar.gz
-			mv vscode-server-linux-\$platform \$commit
+			tar -zxf vscode-server-linux-x64.tar.gz
+			mv vscode-server-linux-x64 \$commit
 		fi
-		rm vscode-server-linux-\$platform.tar.gz
+		rm vscode-server-linux-x64.tar.gz
 	}
-	remote_download "$cmt" "$plat" "$lk"
+	remote_download "$cmt" "$lk"
 EOF
 done
 
 if [ $lk -eq 0 ];then
-	rm -rf $HOME/vscode-server-linux-$plat.tar.gz
+	rm -rf $HOME/vscode-server-linux-x64.tar.gz
 fi
 
 echo "vscode-server已配置完毕。"
